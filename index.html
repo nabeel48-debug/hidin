@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Optimized for Mobile App Browsers (Instagram Webview, iOS Safari, Android Chrome) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
+  <title>HIDIN 3D | Custom 3D Printing & Personalised Creations</title>
+  <meta name="description" content="Custom 3D-printing studio specializing in personalized gifts, articulated dragons, flexi toys, home decor, cosplay props, and bespoke 3D manufacturing. Connect directly on WhatsApp +91 9087055806.">
+  <meta name="theme-color" content="#07080c">
+
+  <!-- Open Graph / Instagram / WhatsApp Preview -->
+  <meta property="og:title" content="HIDIN 3D - Your Ideas. Brought to Life in 3D.">
+  <meta property="og:description" content="Personalised gifts, creative collectibles, desk accessories, and custom 3D printing. Connect on Instagram @hidin_3d_art or WhatsApp +91 9087055806.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Space Grotesk (Headings) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (For interactive 3D hero artifact) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glowing Background Elements -->
+  <div class="bg-ambient-layer" aria-hidden="true">
+    <div class="ambient-orb orb-purple"></div>
+    <div class="ambient-orb orb-cyan"></div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="HIDIN 3D Homepage">
+        <div class="logo-symbol">
+          <svg class="logo-cube-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="cubeGradTop" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00f2fe" />
+                <stop offset="100%" stop-color="#38bdf8" />
+              </linearGradient>
+              <linearGradient id="cubeGradLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#8b5cf6" />
+                <stop offset="100%" stop-color="#6d28d9" />
+              </linearGradient>
+              <linearGradient id="cubeGradRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#06b6d4" />
+                <stop offset="100%" stop-color="#0284c7" />
+              </linearGradient>
+            </defs>
+            <!-- Top Isometric Diamond Face -->
+            <polygon points="50,14 84,33 50,52 16,33" fill="url(#cubeGradTop)" fill-opacity="0.9" />
+            <!-- Left Isometric Face -->
+            <polygon points="16,33 50,52 50,90 16,71" fill="url(#cubeGradLeft)" fill-opacity="0.95" />
+            <!-- Right Isometric Face -->
+            <polygon points="50,52 84,33 84,71 50,90" fill="url(#cubeGradRight)" fill-opacity="0.85" />
+            <!-- Futuristic Layer Lines Inner Core -->
+            <path d="M50,26 L70,37 L50,48 L30,37 Z" stroke="#ffffff" stroke-width="2" stroke-dasharray="3 3" opacity="0.8" />
+            <circle cx="50" cy="52" r="4" fill="#00f2fe" filter="drop-shadow(0 0 6px #00f2fe)" />
+          </svg>
+        </div>
+        <div class="logo-text-wrap">
+          <span class="brand-name">HIDIN</span>
+          <span class="brand-3d-badge">3D</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#categories" class="nav-link">Categories</a>
+        <a href="#catalogue" class="nav-link">Creations</a>
+        <a href="#custom-quote" class="nav-link">Custom Print</a>
+        <a href="#materials" class="nav-link">Materials</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+      </nav>
+
+      <!-- Nav Call-To-Action Group -->
+      <div class="nav-cta-group">
+        <a href="https://instagram.com/hidin_3d_art" target="_blank" rel="noopener noreferrer" class="btn-instagram" aria-label="Follow HIDIN 3D on Instagram">
+          <i data-lucide="instagram" class="inline-icon"></i>
+          <span>@hidin_3d_art</span>
+        </a>
+        <a href="https://wa.me/919087055806?text=Hi%20HIDIN%203D!%20I'd%20like%20to%20enquire%20about%20your%20custom%203D%20prints." target="_blank" rel="noopener noreferrer" class="btn-header-wa" aria-label="Enquire on WhatsApp">
+          <i data-lucide="message-circle" class="inline-icon"></i>
+          <span>+91 9087055806</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#hero" class="mobile-nav-link"><i data-lucide="home" class="inline-icon"></i> Home</a>
+      <a href="#categories" class="mobile-nav-link"><i data-lucide="layout-grid" class="inline-icon"></i> Product Categories</a>
+      <a href="#catalogue" class="mobile-nav-link"><i data-lucide="sparkles" class="inline-icon"></i> Explore Creations</a>
+      <a href="#custom-quote" class="mobile-nav-link"><i data-lucide="wand-2" class="inline-icon"></i> Request Custom Print</a>
+      <a href="#materials" class="mobile-nav-link"><i data-lucide="layers" class="inline-icon"></i> Materials & Finishes</a>
+      <a href="#how-it-works" class="mobile-nav-link"><i data-lucide="help-circle" class="inline-icon"></i> How It Works</a>
+      <a href="https://instagram.com/hidin_3d_art" target="_blank" rel="noopener noreferrer" class="mobile-nav-link" style="color: #f472b6;">
+        <i data-lucide="instagram" class="inline-icon"></i> Instagram (@hidin_3d_art)
+      </a>
+      <a href="https://wa.me/919087055806?text=Hi%20HIDIN%203D!%20I'd%20like%20to%20enquire%20about%20your%20custom%203D%20prints." target="_blank" rel="noopener noreferrer" class="mobile-nav-link" style="color: #4ade80;">
+        <i data-lucide="message-circle" class="inline-icon"></i> WhatsApp (+91 9087055806)
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <span class="pulse-dot"></span>
+            <span>Bespoke 3D Fabrication Studio</span>
+          </div>
+
+          <h1 class="hero-headline">
+            Your Ideas.<br>
+            <span class="text-gradient">Brought to Life</span> in 3D.
+          </h1>
+
+          <p class="hero-description">
+            From personalised gifts and creative collectibles to functional accessories and custom-designed creations, we turn your ideas into reality through custom 3D printing.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#catalogue" class="btn-primary" id="hero-explore-btn">
+              <span>Explore Our Creations</span>
+              <i data-lucide="arrow-down-right" class="inline-icon"></i>
+            </a>
+
+            <button type="button" class="btn-whatsapp-hero" id="hero-custom-btn">
+              <i data-lucide="message-circle" class="inline-icon"></i>
+              <span>Request a Custom Print</span>
+            </button>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="hero-trust-bar">
+            <div class="trust-item">
+              <span class="trust-number">12+</span>
+              <span class="trust-label">Categories</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-number">0.05mm</span>
+              <span class="trust-label">Micro Precision</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-number">100%</span>
+              <span class="trust-label">Customizable</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-number">@hidin_3d_art</span>
+              <span class="trust-label">Instagram</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero 3D Interactive Stage -->
+        <div class="hero-visual-stage" aria-label="Interactive 3D printed artifact render">
+          <div id="hero-3d-canvas-container"></div>
+          
+          <!-- Floating Status Badge -->
+          <div class="hero-floating-card">
+            <div class="badge-pulse-icon">
+              <i data-lucide="box" class="inline-icon"></i>
+            </div>
+            <div>
+              <div class="floating-card-title">Real-Time Precision Slicing</div>
+              <div class="floating-card-subtitle">Layer by layer perfection</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Product Categories Section -->
+    <section class="categories-section" id="categories">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Explore Collections</span>
+          <h2 class="section-title">12 Curated <span class="text-gradient">Categories</span></h2>
+          <p class="section-subtitle">
+            From flexible print-in-place dragons to engineering components and personalized gifts, explore our bespoke 3D printing capabilities.
+          </p>
+        </div>
+
+        <!-- Category Cards Grid -->
+        <div class="category-cards-grid" id="category-cards-grid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Product Catalogue Section -->
+    <section class="catalogue-section" id="catalogue">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Featured Portfolio</span>
+          <h2 class="section-title">Explore Our <span class="text-gradient">Creations</span></h2>
+          <p class="section-subtitle">
+            Click on any item to view customisation options, materials, and connect directly with us on WhatsApp (+91 9087055806) for instant enquiries.
+          </p>
+        </div>
+
+        <!-- Catalogue Toolbar: Search & Category Chips -->
+        <div class="catalogue-toolbar">
+          <div class="search-bar-wrap">
+            <i data-lucide="search" class="search-icon-decor inline-icon"></i>
+            <input 
+              type="text" 
+              id="search-input" 
+              class="search-input" 
+              placeholder="Search dragons, keychains, phone stands, vases..." 
+              autocomplete="off"
+            />
+            <button type="button" id="search-clear-btn" class="search-clear-btn hidden" aria-label="Clear search">
+              <i data-lucide="x" class="inline-icon"></i>
+            </button>
+          </div>
+
+          <!-- Category Filter Chips (Optimized for Horizontal Mobile Swipe) -->
+          <div class="filter-chips-container" id="category-chips">
+            <!-- Filter chips rendered via JS -->
+          </div>
+        </div>
+
+        <!-- Catalogue Metadata Bar -->
+        <div class="catalogue-meta-bar">
+          <span class="product-count-display" id="product-count-display">Showing all creations</span>
+          <span class="catalogue-notice-pill">
+            <i data-lucide="sparkles" class="inline-icon" style="width: 14px; height: 14px;"></i> Made to Order &bull; WhatsApp Enquiries Only
+          </span>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="products-grid">
+          <!-- Products rendered via JS -->
+        </div>
+
+        <!-- Empty State (Shown when search/filter has 0 matches) -->
+        <div class="empty-state hidden" id="empty-state">
+          <i data-lucide="search-x" class="empty-icon"></i>
+          <h3>No matching creations found</h3>
+          <p>Try searching for a different keyword or browse all categories.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Interactive Custom 3D Print Request Builder -->
+    <section class="custom-quote-section" id="custom-quote">
+      <div class="container">
+        <div class="custom-quote-card">
+          <div class="quote-grid">
+            <div class="quote-info-col">
+              <span class="section-eyebrow">Bespoke Fabrication</span>
+              <h3>Have a Unique Idea or Existing <span class="text-gradient">3D File?</span></h3>
+              <p>
+                Whether it's a Thingiverse STL link, an engineered CAD blueprint, or a creative sketch on a napkin, our design team helps you refine, slice, and print it flawlessly.
+              </p>
+
+              <ul class="quote-perks">
+                <li class="quote-perk-item">
+                  <div class="perk-icon-wrap"><i data-lucide="file-check" class="inline-icon"></i></div>
+                  <span>Free 3D file printability & tolerance review</span>
+                </li>
+                <li class="quote-perk-item">
+                  <div class="perk-icon-wrap"><i data-lucide="layers" class="inline-icon"></i></div>
+                  <span>Huge palette of dual-silk, matte, resin, and engineering filaments</span>
+                </li>
+                <li class="quote-perk-item">
+                  <div class="perk-icon-wrap"><i data-lucide="truck" class="inline-icon"></i></div>
+                  <span>Direct consultation on WhatsApp: +91 9087055806</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Custom Project WhatsApp Builder Form -->
+            <form class="custom-form" id="custom-quote-form">
+              <div class="form-group">
+                <label class="form-label" for="custom-category">Project Category</label>
+                <select id="custom-category" class="form-select">
+                  <option value="Personalised Gift or Keepsake">Personalised Gift or Keepsake</option>
+                  <option value="Articulated Creature / Flexi Toy">Articulated Creature / Flexi Toy</option>
+                  <option value="Home Decor or Architectural Vase">Home Decor or Architectural Vase</option>
+                  <option value="Desk Setup & Tech Accessory">Desk Setup & Tech Accessory</option>
+                  <option value="Cosplay Prop or Wearable Armor">Cosplay Prop or Wearable Armor</option>
+                  <option value="Miniature / Tabletop Gaming Model">Miniature / Tabletop Gaming Model</option>
+                  <option value="Functional Replacement Part">Functional Replacement Part</option>
+                  <option value="Custom CAD Design from Scratch">Custom CAD Design from Scratch</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="custom-material">Preferred Material / Finish</label>
+                <select id="custom-material" class="form-select">
+                  <option value="Silk Dual-Color PLA (Shiny iridescent)">Silk Dual-Color PLA (Shiny iridescent)</option>
+                  <option value="Matte Aesthetic PLA (Smooth & velvety)">Matte Aesthetic PLA (Smooth & velvety)</option>
+                  <option value="Ultra-Detail 12K Resin (Glass-smooth micro detail)">Ultra-Detail 12K Resin (Glass-smooth micro detail)</option>
+                  <option value="Tough PETG / Carbon Fiber (Durable outdoor use)">Tough PETG / Carbon Fiber (Durable outdoor use)</option>
+                  <option value="Flexible TPU (Rubber-like flexibility)">Flexible TPU (Rubber-like flexibility)</option>
+                  <option value="Glow-in-the-Dark Green / Blue">Glow-in-the-Dark Green / Blue</option>
+                  <option value="Recommend the best material for me">Recommend the best material for me</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="custom-color">Color Preferences</label>
+                <select id="custom-color" class="form-select">
+                  <option value="Purple & Cyan Dual-Tone (Signature HIDIN 3D)">Purple & Cyan Dual-Tone (Signature HIDIN 3D)</option>
+                  <option value="Obsidian Stealth Black">Obsidian Stealth Black</option>
+                  <option value="Carrara White Marble">Carrara White Marble</option>
+                  <option value="Gold / Copper Silk Metallic">Gold / Copper Silk Metallic</option>
+                  <option value="Electric Neon Cyan">Electric Neon Cyan</option>
+                  <option value="Pastel Lilac / Mint">Pastel Lilac / Mint</option>
+                  <option value="Open to recommendations">Open to recommendations</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="custom-desc">Describe Your Vision / File Link</label>
+                <textarea 
+                  id="custom-desc" 
+                  class="form-textarea" 
+                  rows="3" 
+                  placeholder="e.g. 'I want an articulated dragon in size 50cm with custom initial engraved', or paste a Thingiverse/Printables URL..."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit-quote">
+                <i data-lucide="send" class="inline-icon"></i>
+                <span>Send Custom Enquiry on WhatsApp</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Materials & Finishes Guide -->
+    <section class="materials-section" id="materials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Engineering & Aesthetics</span>
+          <h2 class="section-title">Premium <span class="text-gradient">Materials & Finishes</span></h2>
+          <p class="section-subtitle">
+            We use only high-grade, virgin bio-polymers, composite fibers, and optical resins calibrated for maximum strength and flawless finish.
+          </p>
+        </div>
+
+        <div class="materials-grid">
+          <div class="material-card">
+            <span class="material-pill">Aesthetic Finish</span>
+            <h3 class="material-title">Silk Dual & Tricolor PLA</h3>
+            <p class="material-desc">
+              Extruded with dual pigments that transition dynamically as light hits the surfaces. Silky lustrous sheen with zero painting needed.
+            </p>
+            <ul class="material-specs">
+              <li>&bull; Ideal for: Dragons, Vases, Display Art</li>
+              <li>&bull; Finish: High Gloss Shimmer</li>
+            </ul>
+          </div>
+
+          <div class="material-card">
+            <span class="material-pill">Precision Detail</span>
+            <h3 class="material-title">12K Ultra-Resolution Resin</h3>
+            <p class="material-desc">
+              Photopolymer resin cured layer-by-layer at 25-micron increments. Eliminates visible layer stepping for museum-grade figurines.
+            </p>
+            <ul class="material-specs">
+              <li>&bull; Ideal for: Tabletop Miniatures, Jewelry</li>
+              <li>&bull; Finish: Ultra Smooth & Crisp</li>
+            </ul>
+          </div>
+
+          <div class="material-card">
+            <span class="material-pill">Structural Grade</span>
+            <h3 class="material-title">Impact-Resistant PETG</h3>
+            <p class="material-desc">
+              Strong, semi-flexible, and temperature-resistant up to 80&deg;C. Resists chemicals, UV sunlight, and heavy mechanical stress.
+            </p>
+            <ul class="material-specs">
+              <li>&bull; Ideal for: Gears, Drone Brackets, Tech Docks</li>
+              <li>&bull; Finish: Satin Industrial</li>
+            </ul>
+          </div>
+
+          <div class="material-card">
+            <span class="material-pill">Specialty Composite</span>
+            <h3 class="material-title">Carbon & Glow Filaments</h3>
+            <p class="material-desc">
+              Carbon-fiber reinforced filaments for structural rigidity, alongside photoluminescent pigments that glow vibrantly in the dark.
+            </p>
+            <ul class="material-specs">
+              <li>&bull; Ideal for: Cosplay Props, Night Lights</li>
+              <li>&bull; Finish: Textured Matte & Luminous</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. How It Works (4 Steps) -->
+    <section class="steps-section" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Simple Workflow</span>
+          <h2 class="section-title">How It <span class="text-gradient">Works</span></h2>
+          <p class="section-subtitle">
+            Ordering a custom 3D printed piece is as straightforward as sending a quick message on WhatsApp.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-number">01</span>
+            <h3 class="step-title">Share Your Idea</h3>
+            <p class="step-desc">Pick an item from our portfolio or share your custom 3D file, sketch, or concept directly via WhatsApp.</p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">02</span>
+            <h3 class="step-title">Choose Finishes</h3>
+            <p class="step-desc">Select your preferred material (Silk PLA, Resin, PETG), vibrant colorway, and personalization details.</p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">03</span>
+            <h3 class="step-title">Precision Printing</h3>
+            <p class="step-desc">We fabricate your model using calibrated high-speed 3D printers, followed by meticulous hand-inspection.</p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">04</span>
+            <h3 class="step-title">Doorstep Delivery</h3>
+            <p class="step-desc">Carefully packaged with multi-layer bubble wrap and shipped swiftly to your address.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Instagram Showcase Banner -->
+    <section class="instagram-section">
+      <div class="container">
+        <div class="instagram-banner">
+          <div class="instagram-info">
+            <span class="section-eyebrow">Official Instagram Page</span>
+            <h3>Follow @hidin_3d_art on Instagram</h3>
+            <p>Catch daily 3D print timelapse videos, behind-the-scenes slicing, newly released articulated creatures, and client builds.</p>
+          </div>
+
+          <a href="https://instagram.com/hidin_3d_art" target="_blank" rel="noopener noreferrer" class="btn-ig-main">
+            <i data-lucide="instagram" class="inline-icon"></i>
+            <span>Follow @hidin_3d_art</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Product Details Modal (Section 5) -->
+  <div class="modal-wrapper hidden" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close details">
+        <i data-lucide="x" class="inline-icon"></i>
+      </button>
+
+      <div class="modal-grid">
+        <!-- Media Column -->
+        <div class="modal-media-col">
+          <img src="" alt="" class="modal-image" id="modal-img">
+        </div>
+
+        <!-- Info Column -->
+        <div class="modal-info-col">
+          <div class="modal-badge-row">
+            <span class="modal-category-badge" id="modal-category">Category</span>
+            <span class="modal-spec-badge hidden" id="modal-spec-badge">Print Spec</span>
+          </div>
+
+          <h2 class="modal-title" id="modal-title">Product Title</h2>
+          <p class="modal-desc" id="modal-desc">Product description goes here.</p>
+
+          <!-- Key Features -->
+          <ul class="modal-features-list" id="modal-features"></ul>
+
+          <!-- Customisation Box -->
+          <div class="modal-customisation-box">
+            <div class="custom-option-group">
+              <span class="option-group-label">Available Materials</span>
+              <div class="options-pill-row" id="modal-materials"></div>
+            </div>
+
+            <div class="custom-option-group">
+              <span class="option-group-label">Select Color / Finish</span>
+              <div class="options-pill-row" id="modal-colors"></div>
+            </div>
+
+            <div class="custom-option-group">
+              <span class="option-group-label">Select Size</span>
+              <div class="options-pill-row" id="modal-sizes"></div>
+            </div>
+
+            <div class="custom-option-group">
+              <label class="option-group-label" for="modal-custom-note">Custom Text / Engraving / Notes (Optional)</label>
+              <input 
+                type="text" 
+                id="modal-custom-note" 
+                class="custom-note-input" 
+                placeholder="e.g. Engrave 'Alex', special scale, or song link..."
+              />
+            </div>
+          </div>
+
+          <!-- Modal Action CTA -->
+          <div class="modal-footer-cta">
+            <a href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-modal" id="modal-whatsapp-btn">
+              <i data-lucide="message-circle" class="inline-icon"></i>
+              <span>Enquire on WhatsApp</span>
+            </a>
+            <span class="modal-cta-caption">Opens WhatsApp (+91 9087055806) with pre-filled message & your chosen preferences</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp Configuration Modal (Quick Switcher) -->
+  <div class="modal-wrapper hidden" id="config-modal" role="dialog" aria-modal="true" aria-labelledby="config-title">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog" style="max-width: 480px; padding: 1.75rem;">
+      <h3 id="config-title" style="margin-bottom: 0.75rem; font-size: 1.35rem;">WhatsApp Number Setting</h3>
+      <p style="font-size: 0.88rem; margin-bottom: 1.25rem;">
+        Official HIDIN 3D WhatsApp number: <strong>+91 9087055806</strong>. You can verify or customize it here.
+      </p>
+
+      <div class="form-group" style="margin-bottom: 1.25rem;">
+        <label class="form-label" for="config-wa-number">WhatsApp Number (with country code, no + or spaces)</label>
+        <input type="text" id="config-wa-number" class="form-select" placeholder="919087055806" value="919087055806">
+        <span style="font-size: 0.75rem; color: var(--text-dim); margin-top: 0.25rem;">Default: 919087055806 (+91 9087055806)</span>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+        <button type="button" id="reset-config-btn" class="option-pill" style="padding: 0.55rem 0.95rem;">Reset</button>
+        <button type="button" id="close-config-btn" class="option-pill" style="padding: 0.55rem 0.95rem;">Cancel</button>
+        <button type="button" id="save-config-btn" class="btn-primary" style="padding: 0.55rem 1.15rem; font-size: 0.88rem;">Save & Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Quick Action Button -->
+  <a 
+    href="https://wa.me/919087055806?text=Hi%20HIDIN%203D!%20I'd%20like%20to%20enquire%20about%20your%20custom%203D%20printing%20creations." 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="floating-wa-btn" 
+    id="floating-wa-btn"
+    aria-label="Direct WhatsApp Chat with HIDIN 3D"
+  >
+    <div class="floating-wa-pulse"></div>
+    <i data-lucide="message-circle" style="width: 28px; height: 28px;"></i>
+  </a>
+
+  <!-- Mobile Sticky Bottom Action Bar (Optimized for Instagram in-app browser) -->
+  <aside class="mobile-bottom-bar" aria-label="Mobile Quick Actions">
+    <a href="#catalogue" class="mobile-bottom-btn btn-mobile-catalogue">
+      <i data-lucide="grid" class="inline-icon"></i>
+      <span>Browse Catalogue</span>
+    </a>
+    <a href="https://wa.me/919087055806?text=Hi%20HIDIN%203D!%20I'd%20like%20to%20enquire%20about%20custom%203D%20printing." target="_blank" rel="noopener noreferrer" class="mobile-bottom-btn btn-mobile-wa">
+      <i data-lucide="message-circle" class="inline-icon"></i>
+      <span>Enquire on WhatsApp</span>
+    </a>
+  </aside>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="brand-logo">
+            <div class="logo-symbol">
+              <svg class="logo-cube-svg" viewBox="0 0 100 100" fill="none">
+                <polygon points="50,14 84,33 50,52 16,33" fill="#00f2fe" fill-opacity="0.9" />
+                <polygon points="16,33 50,52 50,90 16,71" fill="#8b5cf6" fill-opacity="0.95" />
+                <polygon points="50,52 84,33 84,71 50,90" fill="#06b6d4" fill-opacity="0.85" />
+              </svg>
+            </div>
+            <div class="logo-text-wrap">
+              <span class="brand-name">HIDIN</span>
+              <span class="brand-3d-badge">3D</span>
+            </div>
+          </div>
+          <p>
+            Your Ideas. Brought to Life in 3D. We turn creative visions into tactile masterpieces using cutting-edge additive manufacturing.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#catalogue">Articulated Dragons & Flexi</a></li>
+            <li><a href="#catalogue">Personalised Gifts</a></li>
+            <li><a href="#catalogue">Home Decor & Lamps</a></li>
+            <li><a href="#catalogue">Cosplay & Wearable Props</a></li>
+            <li><a href="#catalogue">Functional Components</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="#custom-quote">Custom 3D Printing</a></li>
+            <li><a href="#materials">Silk & Resin Finishes</a></li>
+            <li><a href="#custom-quote">CAD & Slicing Assistance</a></li>
+            <li><a href="#how-it-works">Fast Delivery</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Connect</h4>
+          <ul class="footer-links">
+            <li><a href="https://instagram.com/hidin_3d_art" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram" class="inline-icon"></i> @hidin_3d_art</a></li>
+            <li><a href="https://wa.me/919087055806?text=Hi%20HIDIN%203D!%20I'd%20like%20to%20enquire%20about%20your%20creations." target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle" class="inline-icon"></i> +91 9087055806</a></li>
+            <li><button type="button" class="footer-config-link" id="open-config-btn"><i data-lucide="settings" class="inline-icon"></i> WhatsApp Config</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 HIDIN 3D &bull; Instagram: <a href="https://instagram.com/hidin_3d_art" target="_blank" rel="noopener noreferrer" style="color: var(--neon-cyan);">@hidin_3d_art</a> &bull; WhatsApp: <a href="https://wa.me/919087055806" target="_blank" rel="noopener noreferrer" style="color: var(--wa-green);">+91 9087055806</a></div>
+        <div>Product showcase and bespoke enquiry portfolio.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/hero-3d.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
